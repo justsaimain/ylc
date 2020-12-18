@@ -32,7 +32,7 @@ Route::post('/login/teacher', [LoginController::class, 'teacherLogin']);
 
 
 
-Route::get('/storage/courses/{course_code}/videos/{file_name}', function ($course_code, $file_name) {
+Route::get('public/storage/courses/{course_code}/videos/{file_name}', function ($course_code, $file_name) {
     return response();
 })->middleware('auth:web');
 
