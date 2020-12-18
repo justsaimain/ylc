@@ -30,9 +30,13 @@ Route::post('/login/teacher', [LoginController::class, 'teacherLogin']);
 
 // Storage Protect
 
+
+
 Route::get('/storage/courses/{course_code}/videos/{file_name}', function ($course_code, $file_name) {
-    dd($course_code);
+    return response();
 })->middleware('auth:web');
+
+
 // User (or) Student
 Route::group(['middleware' => 'auth:web'], function () {
     Route::get('/student', function () {
