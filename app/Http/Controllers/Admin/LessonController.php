@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Unit;
+use App\Models\Lesson;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Lesson;
+use Illuminate\Support\Facades\Crypt;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
 
 class LessonController extends Controller
@@ -24,8 +25,8 @@ class LessonController extends Controller
 
         if ($request->file('lesson_video')) {
             $video = $request->file('lesson_video');
-            $video_name = $lesson_code . '.' . $video->getClientOriginalExtension();
-            $path = public_path('storage/courses/') . $unit->course->course_code . '/videos';
+            $video_name = Crypt::encryptString($lesson_code . '.' . $video->getClientOriginalExtension());
+            $path = public_path('storage/courses/') . $unit->course->course_code . '/lessons/videos';
             $video->move($path, $video_name);
             $lesson->video = $video_name;
         }

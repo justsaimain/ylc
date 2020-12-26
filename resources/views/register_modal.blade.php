@@ -1,3 +1,7 @@
+@php
+$regions = Http::get('http://myancity.devsm.net/api/regions')->json();
+@endphp
+
 <!-- Modal -->
 <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">

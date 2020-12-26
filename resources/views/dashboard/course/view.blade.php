@@ -33,7 +33,7 @@
                                 <tr>
                                     <td>{{ $loop->index + 1 }}</td>
                                     <td>{{ $data->name }}</td>
-                                    <td>{{ $data->description }}</td>
+                                    <td>{{ Str::limit($data->description, 100) }}</td>
                                     <td>{{ $data->created_at->diffForHumans() }}</td>
                                     <td>{{ $data->updated_at->diffForHumans() }}</td>
                                     <th>

@@ -66,7 +66,7 @@ class CourseController extends Controller
             $course->video = $video_name;
         }
         $course->save();
-        return 'success';
+        return redirect('/dashboard/course/' . $course_code . '/management');
     }
 
     public function manageCourse($course_code)

@@ -12,7 +12,13 @@ use App\Http\Controllers\Admin\LessonController;
 use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\Admin\TeacherController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ExerciseController;
 use App\Http\Controllers\Admin\RegistrationController;
+use App\Http\Controllers\User\CourseController as UserCourseController;
+use App\Http\Controllers\User\ExerciseController as UserExerciseController;
+use App\Http\Controllers\User\Exerciseontroller;
+use App\Http\Controllers\User\LessonController as UserLessonController;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Storage;
 
 Route::get('/', [PageController::class, 'index']);
@@ -28,20 +34,21 @@ Route::get('/login/teacher', [LoginController::class, 'showTeacherLoginForm']);
 Route::post('/login/admin', [LoginController::class, 'adminLogin']);
 Route::post('/login/teacher', [LoginController::class, 'teacherLogin']);
 
-// Storage Protect
-
-
-
-Route::get('public/storage/courses/{course_code}/videos/{file_name}', function ($course_code, $file_name) {
-    return response();
-})->middleware('auth:web');
-
 
 // User (or) Student
-Route::group(['middleware' => 'auth:web'], function () {
-    Route::get('/student', function () {
+
+Route::get('/courses', [UserCourseController::class, 'index']);
+Route::get('/course/{course_code}/{course_name}', [UserCourseController::class, 'view']);
+
+Route::group(['middleware' => 'auth:web', 'prefix' => '/student'], function () {
+    Route::get('/', function () {
         return view('student.index');
     });
+
+    Route::get('/enrolled', [UserCourseController::class, 'enrolledCourse']);
+    Route::get('/enrolled/{course_code}', [UserCourseController::class, 'viewEnrolledCourse']);
+    Route::get('/enrolled/{course_code}/{unit_code}/{lesson_code}', [UserLessonController::class, 'viewLesson']);
+    Route::get('/enrolled/{course_code}/{unit_code}/{lesson_code}/exercise', [UserExerciseController::class, 'viewExercise']);
 });
 
 // Teacher
@@ -53,7 +60,6 @@ Route::group(['middleware' => 'auth:teacher'], function () {
 
 // Admin
 Route::group(['middleware' => 'auth:admin', 'prefix' => 'dashboard'], function () {
-
 
     Route::get('/', function () {
         return view('dashboard.index');
@@ -97,12 +103,15 @@ Route::group(['middleware' => 'auth:admin', 'prefix' => 'dashboard'], function (
 
     Route::post('/unit/{id}/add/lesson', [LessonController::class, 'addLesson'])->name('dashboard.add_lesson_to_unit');
     Route::get('/unit/{unit_code}/lesson/{lesson_code}', [LessonController::class, 'viewLesson'])->name('dashboard.view_lessoon');
+
+    Route::get('/unit/{unit_code}/lesson/{lesson_code}/exercise/add', [ExerciseController::class, 'addExercise'])->name('dashboard.add_exercise');
+    Route::post('/unit/{unit_code}/lesson/{lesson_code}/exercise/add', [ExerciseController::class, 'addExercisePost'])->name('dashboard.add_exercise_post');
 });
 
 
 Route::get('/test', function () {
-    $photo = storage_path('app/uploads/test/JSauanjWUAwj0Ald2kYgqpZKSmJwRWLFKC7vwvtm.jpg');
-    return view('test', compact('photo'));
+    $video = Crypt::decryptString('eyJpdiI6IkhHOWZYNnhMaDlTamxZNnB1QjgvV1E9PSIsInZhbHVlIjoic0tzd2o3SGl1cFVLYmRFT2ZKOE9JYXhWZkFxUVBCVS91NEZJZ2lBUWxKQT0iLCJtYWMiOiI2MDVlNzlhN2I3ZjE2N2RkMGY3OWMzYzYxMTg5MTE5YzFlODcxNzMzODUxM2MxYjgwNmEzZDNlNzM2OWY4MTA5In0=');
+    return $video;
 });
 
 Route::post('/test', function (Request $request) {
