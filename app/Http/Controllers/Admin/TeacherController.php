@@ -46,16 +46,23 @@ class TeacherController extends Controller
 
     public function createTeacherPost(Request $request)
     {
+
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string']
+            'password' => ['required', 'string'],
+            'education' => ['required', 'string'],
+            'work' => ['required', 'string'],
+            'job' => ['required', 'string']
         ]);
 
         $teacher = new Teacher();
         $teacher->name = $request->name;
         $teacher->email = $request->email;
         $teacher->password = Hash::make($request->password);
+        $teacher->education = $request->education;
+        $teacher->work = $request->work;
+        $teacher->job = $request->job;
         $teacher->save();
 
         return back();

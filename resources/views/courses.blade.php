@@ -33,7 +33,7 @@
                     <div class="card-body">
                         <ul class="list-inline mb-2">
                             <li class="list-inline-item">
-                                <i class="ti-timer mr-1 text-color"></i>{{ $course->duration }} months</li>
+                                <i class="ti-timer mr-1 text-color"></i>{{ $course->duration }} days</li>
                             <li class="list-inline-item"><a class="text-color"
                                     href="#">{{ $course->category->name }}</a></li>
                         </ul>

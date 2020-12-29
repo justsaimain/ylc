@@ -37,6 +37,25 @@
                             </div>
                         </div>
                         <div class="form-group row">
+                            <label for="education" class="col-sm-2 col-form-label">Education & Qualifications</label>
+                            <div class="col-sm-10">
+                                <textarea name="education" id="education" cols="30" rows="10"
+                                    class="form-control"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="work" class="col-sm-2 col-form-label">Work History & Experience</label>
+                            <div class="col-sm-10">
+                                <textarea name="work" id="work" cols="30" rows="10" class="form-control"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="job" class="col-sm-2 col-form-label">Current Job</label>
+                            <div class="col-sm-10">
+                                <textarea name="job" id="job" cols="30" rows="10" class="form-control"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group row">
                             <div class="col-sm-10">
                                 <button type="submit" class="btn btn-primary">Create</button>
                             </div>

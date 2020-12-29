@@ -17,6 +17,9 @@ class CreateTeachersTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
+            $table->text('education')->nullable();
+            $table->text('work')->nullable();
+            $table->text('job')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

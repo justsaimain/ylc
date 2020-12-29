@@ -542,6 +542,8 @@ class ComposerStaticInitcac8facc412bdc2a93ef84e21f1f0472
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\PageController' => __DIR__ . '/../..' . '/app/Http/Controllers/PageController.php',
         'App\\Http\\Controllers\\User\\CourseController' => __DIR__ . '/../..' . '/app/Http/Controllers/User/CourseController.php',
+        'App\\Http\\Controllers\\User\\ExerciseController' => __DIR__ . '/../..' . '/app/Http/Controllers/User/ExerciseController.php',
+        'App\\Http\\Controllers\\User\\LessonController' => __DIR__ . '/../..' . '/app/Http/Controllers/User/LessonController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',

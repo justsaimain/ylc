@@ -59,4 +59,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Unit::class, 'user_units');
     }
+
+    public function exercises()
+    {
+        return $this->belongsToMany(Exercise::class, 'user_exercises');
+    }
 }

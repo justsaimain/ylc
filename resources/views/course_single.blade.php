@@ -50,7 +50,7 @@
                             <i class="ti-alarm-clock text-primary icon-md mr-2"></i>
                             <div class="text-left">
                                 <h6 class="mb-0">DURATION</h6>
-                                <p class="mb-0">{{ $course->duration }} Months</p>
+                                <p class="mb-0">{{ $course->duration }} Days</p>
                             </div>
                         </div>
                     </li>

@@ -27,6 +27,8 @@ return array(
     'App\\Http\\Controllers\\HomeController' => $baseDir . '/app/Http/Controllers/HomeController.php',
     'App\\Http\\Controllers\\PageController' => $baseDir . '/app/Http/Controllers/PageController.php',
     'App\\Http\\Controllers\\User\\CourseController' => $baseDir . '/app/Http/Controllers/User/CourseController.php',
+    'App\\Http\\Controllers\\User\\ExerciseController' => $baseDir . '/app/Http/Controllers/User/ExerciseController.php',
+    'App\\Http\\Controllers\\User\\LessonController' => $baseDir . '/app/Http/Controllers/User/LessonController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\Authenticate' => $baseDir . '/app/Http/Middleware/Authenticate.php',
     'App\\Http\\Middleware\\EncryptCookies' => $baseDir . '/app/Http/Middleware/EncryptCookies.php',

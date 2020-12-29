@@ -30,7 +30,7 @@
                     </dl>
                     <video class="w-100" controls>
                         <source
-                            src="{{ asset('storage/courses/' . $lesson->unit->course->course_code . '/videos/' . $lesson->video) }}"
+                            src="{{ asset('storage/courses/' . $lesson->unit->course->course_code . '/lessons/videos/' . $lesson->video) }}"
                             type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
