@@ -67,9 +67,12 @@
             </div>
             <div class="col-xl-3 text-sm-right text-left order-sm-2 order-3 order-xl-3 col-sm-6 mb-4 mb-xl-0">
                 @if ($course->users->contains(Auth::user()))
-                <a href="#" class="btn btn-primary">Enrolled</a>
+                <a href="{{ url('student/enrolled/' . $course->course_code) }}" class="btn btn-primary">Enrolled</a>
                 @else
-                <a href="#" class="btn btn-primary">Apply now</a>
+                <form action="{{ route('course.enroll' , $course->course_code) }}" method="POST">
+                    @csrf
+                    <button type="submit" class="btn btn-primary">Apply now</button>
+                </form>
                 @endif
             </div>
             <!-- border -->
@@ -82,6 +85,10 @@
             <div class="col-12 mb-4">
                 <h3>About Course</h3>
                 <p>{{ $course->description }}</p>
+                <div class="mt-3">
+                    <video class="w-100" controls>
+                        <source src="{{ asset('storage/courses/pub/videos/' . $course->video) }}" type="video/mp4">
+                </div>
             </div>
             <!-- teacher -->
             <div class="col-12">

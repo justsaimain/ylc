@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ExerciseController;
 use App\Http\Controllers\Admin\RegistrationController;
 use App\Http\Controllers\User\CourseController as UserCourseController;
+use App\Http\Controllers\User\EnrollController;
 use App\Http\Controllers\User\ExerciseController as UserExerciseController;
 use App\Http\Controllers\User\Exerciseontroller;
 use App\Http\Controllers\User\LessonController as UserLessonController;
@@ -39,6 +40,8 @@ Route::post('/login/teacher', [LoginController::class, 'teacherLogin']);
 
 Route::get('/courses', [UserCourseController::class, 'index']);
 Route::get('/course/{course_code}/{course_name}', [UserCourseController::class, 'view']);
+
+Route::post('/enroll-course/{course_code}', [EnrollController::class, 'enrollCourse'])->name('course.enroll');
 
 Route::group(['middleware' => 'auth:web', 'prefix' => '/student'], function () {
     Route::get('/', function () {
