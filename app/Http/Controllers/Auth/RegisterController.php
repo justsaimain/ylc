@@ -70,7 +70,7 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
 
-        $custom_id = IdGenerator::generate(['table' => 'users', 'length' => 10, 'prefix' => date('ym')]);
+        $custom_id = IdGenerator::generate(['table' => 'users', 'field' => 'user_code', 'length' => 10, 'prefix' => date('ym')]);
 
         return User::create([
             'name' => $data['name'],

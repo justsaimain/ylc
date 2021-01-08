@@ -15,7 +15,7 @@ class UnitController extends Controller
         $course = Course::find($id);
 
         $prefix = date('ym') . $course->course_code;
-        $unit_code = IdGenerator::generate(['table' => 'units', 'length' => 20, 'prefix' => $prefix]);
+        $unit_code = IdGenerator::generate(['table' => 'units', 'field' => 'unit_code', 'length' => 20, 'prefix' => $prefix]);
 
         $unit = new Unit();
         $unit->course_id = $course->id;

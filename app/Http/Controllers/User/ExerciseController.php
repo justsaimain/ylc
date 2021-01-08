@@ -24,9 +24,8 @@ class ExerciseController extends Controller
                 array_push($exercises, $exe);
             }
         }
-
         $exe_for_answer = collect($exercises);
-        return $exe_for_answer;
+        // dump($lesson->exercise);
         return view('student.exercise', compact('lesson', 'course', 'exe_for_answer'));
     }
 }

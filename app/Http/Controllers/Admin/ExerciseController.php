@@ -24,7 +24,7 @@ class ExerciseController extends Controller
         $lesson = Lesson::where('lesson_code', $lesson_code)->first();
 
         $prefix = date('ym') . rand(00, 99);
-        $exercise_code = IdGenerator::generate(['table' => 'exercises', 'length' => 10, 'prefix' => $prefix]);
+        $exercise_code = IdGenerator::generate(['table' => 'exercises', 'field' => 'exercise_code', 'length' => 10, 'prefix' => $prefix]);
 
 
         $exercise = new Exercise();
@@ -38,7 +38,7 @@ class ExerciseController extends Controller
         $exercise->answer = $request->answer;
 
         if ($request->file('image')) {
-            $file_name = time() . rand(000, 999) . $request->file('image')->getClientOriginalExtension();
+            $file_name = time() . rand(000, 999) . '.' . $request->file('image')->getClientOriginalExtension();
             $path = public_path('storage/courses/' . $unit->course->course_code . '/lessons/images/');
             $request->file('image')->move($path, $file_name);
             $exercise->image = $file_name;

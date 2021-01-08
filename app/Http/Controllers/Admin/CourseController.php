@@ -41,7 +41,7 @@ class CourseController extends Controller
         // ]);
 
         $prefix = date('ym') . $request->category_id . $request->teacher_id;
-        $course_code = IdGenerator::generate(['table' => 'courses', 'length' => 10, 'prefix' => $prefix]);
+        $course_code = IdGenerator::generate(['table' => 'courses', 'field' => 'course_code', 'length' => 10, 'prefix' => $prefix]);
 
 
         $course = new Course();

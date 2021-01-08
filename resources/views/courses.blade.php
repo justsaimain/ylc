@@ -27,7 +27,7 @@
             @foreach ($courses as $course)
             <!-- course item -->
             <div class="col-lg-4 col-sm-6 mb-5">
-                <div class="card p-0 border-primary rounded-0 hover-shadow">
+                <div class="card p-0 border-primary rounded-0 hover-shadow h-100">
                     <img class="card-img-top rounded-0"
                         src="{{ asset('storage/courses/pub/images/' . $course->image) }}" alt="course thumb">
                     <div class="card-body">
@@ -40,7 +40,7 @@
                         <a href="{{ url('/course/' . $course->course_code . '/' . $course->name) }}">
                             <h4 class="card-title">{{ $course->name }}</h4>
                         </a>
-                        <p class="card-text mb-4"> {{ Str::limit($course->description, 100) }}</p>
+                        <p class="card-text mb-4"> {{ Str::limit($course->description, 50) }}</p>
                         @if ($course->users->contains(Auth::user()))
                         <a href="{{ url('/course/' . $course->course_code . '/' . $course->name) }}"
                             class="btn btn-primary btn-sm">Enrolled</a>

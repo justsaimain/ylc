@@ -50,7 +50,7 @@ class LoginController extends Controller
             'password' => 'required|min:6'
         ]);
 
-        if (Auth::guard('web')->attempt(['email' => $request->email, 'password' => $request->password, 'is_approved' => true], $request->get('remember'))) {
+        if (Auth::guard('web')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
             return redirect()->intended('/student');
         }
         return back()->withInput($request->only('email', 'remember'));
