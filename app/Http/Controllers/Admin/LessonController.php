@@ -15,7 +15,7 @@ class LessonController extends Controller
     {
         $unit = Unit::find($id);
         $prefix =  $unit->course->course_code . rand(001, 999);
-        $lesson_code = IdGenerator::generate(['table' => 'units', 'field' => 'lesson_code', 'length' => 20, 'prefix' => $prefix]);
+        $lesson_code = IdGenerator::generate(['table' => 'lessons', 'field' => 'lesson_code', 'length' => 20, 'prefix' => $prefix]);
 
         $lesson = new Lesson();
         $lesson->unit_id = $unit->id;
