@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Models\Course;
 use App\Models\Lesson;
+use App\Models\Exercise;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Course;
 use Illuminate\Support\Facades\Auth;
 
 class ExerciseController extends Controller
@@ -27,5 +29,26 @@ class ExerciseController extends Controller
         $exe_for_answer = collect($exercises);
         // dump($lesson->exercise);
         return view('student.exercise', compact('lesson', 'course', 'exe_for_answer'));
+    }
+
+    public function checkVoiceTest(Request $request)
+    {
+
+        $exercise = Exercise::find($request->exerciseId);
+        $result = $request->result;
+
+        if (strcasecmp($exercise->question, $result) == 0) {
+            return response()->json([
+                'currect_answer' => $exercise->question,
+                'your__answer' => $result,
+                'is_currect' => true
+            ]);
+        } else {
+            return response()->json([
+                'currect_answer' => $exercise->question,
+                'your__answer' => $result,
+                'is_currect' => false
+            ]);
+        }
     }
 }

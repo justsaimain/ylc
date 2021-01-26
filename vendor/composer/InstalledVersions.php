@@ -14,12 +14,12 @@ class InstalledVersions
 private static $installed = array (
   'root' => 
   array (
-    'pretty_version' => '1.0.0+no-version-set',
-    'version' => '1.0.0.0',
+    'pretty_version' => 'dev-master',
+    'version' => 'dev-master',
     'aliases' => 
     array (
     ),
-    'reference' => NULL,
+    'reference' => '6ae9c7af66d91f64e2fc483a50a6a34d6df9980e',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -55,6 +55,15 @@ private static $installed = array (
       array (
         0 => '*',
       ),
+    ),
+    'diglactic/laravel-breadcrumbs' => 
+    array (
+      'pretty_version' => 'v6.0.4',
+      'version' => '6.0.4.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '7a4db9535cf656340ed1f148c5ff035b436e7731',
     ),
     'dnoegel/php-xdg-base-dir' => 
     array (
@@ -462,12 +471,12 @@ private static $installed = array (
     ),
     'laravel/laravel' => 
     array (
-      'pretty_version' => '1.0.0+no-version-set',
-      'version' => '1.0.0.0',
+      'pretty_version' => 'dev-master',
+      'version' => 'dev-master',
       'aliases' => 
       array (
       ),
-      'reference' => NULL,
+      'reference' => '6ae9c7af66d91f64e2fc483a50a6a34d6df9980e',
     ),
     'laravel/tinker' => 
     array (
@@ -982,6 +991,42 @@ private static $installed = array (
       ),
       'reference' => 'c6c1022351a901512170118436c764e473f6de8c',
     ),
+    'spatie/backtrace' => 
+    array (
+      'pretty_version' => '1.0.0',
+      'version' => '1.0.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '59811ee52b21b5a42a9c6ca8699f979fd64d8cec',
+    ),
+    'spatie/laravel-ray' => 
+    array (
+      'pretty_version' => '1.7.1',
+      'version' => '1.7.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '3f0a23f085e96238420746a25c776f2b98fc2610',
+    ),
+    'spatie/macroable' => 
+    array (
+      'pretty_version' => '1.0.1',
+      'version' => '1.0.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '7a99549fc001c925714b329220dea680c04bfa48',
+    ),
+    'spatie/ray' => 
+    array (
+      'pretty_version' => '1.12.0',
+      'version' => '1.12.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '14e29ea903253910e6aef5aaf927c9cbb7b33a60',
+    ),
     'swiftmailer/swiftmailer' => 
     array (
       'pretty_version' => 'v6.2.3',
@@ -1205,6 +1250,15 @@ private static $installed = array (
       ),
       'reference' => 'd15da7ba4957ffb8f1747218be9e1a121fd298a1',
     ),
+    'symfony/stopwatch' => 
+    array (
+      'pretty_version' => 'v5.2.1',
+      'version' => '5.2.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '2b105c0354f39a63038a1d8bf776ee92852813af',
+    ),
     'symfony/string' => 
     array (
       'pretty_version' => 'v5.2.0',
@@ -1292,6 +1346,33 @@ private static $installed = array (
       array (
       ),
       'reference' => 'bafc69caeb4d49c39fd0779086c03a3738cbb389',
+    ),
+    'zbateson/mail-mime-parser' => 
+    array (
+      'pretty_version' => '1.3.1',
+      'version' => '1.3.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '706964d904798b8c22d63f62f0ec5f5bc84e30d9',
+    ),
+    'zbateson/mb-wrapper' => 
+    array (
+      'pretty_version' => '1.0.1',
+      'version' => '1.0.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '721b3dfbf7ab75fee5ac60a542d7923ffe59ef6d',
+    ),
+    'zbateson/stream-decorators' => 
+    array (
+      'pretty_version' => '1.0.4',
+      'version' => '1.0.4.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '6f54738dfecc65e1d5bfb855035836748083a6dd',
     ),
   ),
 );

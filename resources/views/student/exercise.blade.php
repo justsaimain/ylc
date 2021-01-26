@@ -20,7 +20,7 @@
                             <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist"
                                 aria-orientation="vertical">
                                 @foreach ($lesson->exercise as $exe)
-                                <a class="nav-link @if ($loop->first) active @endif rounded"
+                                <a class="nav-link tab-click @if ($loop->first) active @endif rounded"
                                     id="v-pills-{{ $exe->id }}-tab" data-toggle="pill" href="#v-pills-{{ $exe->id }}"
                                     role="tab" aria-controls="v-pills-{{ $exe->id }}" aria-selected="true">
                                     <div class="d-flex justify-content-between align-items-center">
@@ -44,8 +44,6 @@
                                     id="v-pills-{{ $exe->id }}" role="tabpanel"
                                     aria-labelledby="v-pills-{{ $exe->id }}">
                                     @if ($exe->type == 'true_false')
-
-
                                     <div>
                                         <span class="badge badge-primary px-2 py-2">
                                             True or False
@@ -58,16 +56,16 @@
                                             @endif
                                             <h4 class="mt-3">{{ $exe->question }}</h4>
                                             <div class="d-flex justify-content-center align-items-center mt-3">
-                                                <button class="btn btn-primary mr-3"><i class="fas fa-check mr-2"></i>
+                                                <button class="btn btn-primary mr-3 true-btn"><i
+                                                        class="fas fa-check mr-2"></i>
                                                     True</button>
-                                                <button class="btn btn-primary"><i class="fas fa-times mr-2"></i>
+                                                <button class="btn btn-primary false-btn"><i
+                                                        class="fas fa-times mr-2"></i>
                                                     False</button>
                                             </div>
                                         </div>
                                     </div>
-
                                     @elseif($exe->type == 'mcq')
-
                                     <div>
                                         <span class="badge badge-primary px-2 py-2">
                                             Multiple Choice Question
@@ -88,9 +86,7 @@
                                             </div>
                                         </div>
                                     </div>
-
                                     @elseif($exe->type == 'scramble')
-
                                     <div>
                                         <span class="badge badge-primary px-2 py-2">
                                             Scramble
@@ -112,8 +108,30 @@
                                             </div>
                                         </div>
                                     </div>
-
                                     @elseif($exe->type == 'matching')
+                                    matching
+                                    @elseif($exe->type == 'voice')
+                                    <span class="badge badge-primary px-2 py-2">
+                                        Voice Test
+                                    </span>
+                                    <input type="text" value="{{ $exe->id }}" hidden class="exeId">
+                                    <h3 class="text-center mb-5">{{ ucfirst($exe->question) }}</h3>
+                                    @if ($exe->image)
+                                    <img class="rounded"
+                                        src="{{ asset('storage/courses/' . $course->course_code .'/lessons/images/' .  $exe->image  ) }}"
+                                        alt="">
+                                    @endif
+                                    <div class="text-center result-box d-none">
+                                        <i class="fas fa-5x result-box-icon"></i>
+                                        <p class="h3 mt-2 result-box-text"></p>
+                                    </div>
+                                    <div class="text-dark text-center instructions h5 mt-3">
+                                    </div>
+                                    <p class="result-p"></p>
+                                    <div class="form-group text-center">
+                                        <button class="btn btn-primary voice-start-btn" data-id="{{ $exe->id }}">Start
+                                            Answer</button>
+                                    </div>
 
                                     @else
                                     <p>nothing</p>

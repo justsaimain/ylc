@@ -23,6 +23,7 @@ class CreateExercisesTable extends Migration
             $table->text('section_a')->nullable();
             $table->text('section_b')->nullable();
             $table->text('answer')->nullable();
+            $table->string('language')->nullable();
             $table->string('image');
             $table->timestamps();
 

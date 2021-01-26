@@ -2,10 +2,7 @@
 @section('content')
 <div class="row page-titles mx-0">
     <div class="col p-md-0">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
-            <li class="breadcrumb-item active"><a href="javascript:void(0)">Home</a></li>
-        </ol>
+        {{ Breadcrumbs::render('student.enrolled') }}
     </div>
 </div>
 <!-- row -->
@@ -20,7 +17,7 @@
                     <div class="card">
                         <div class="card-header bg-white">
                             <h5 class="card-title"><a
-                                    href="{{ url('student/enrolled/' . $course->course_code) }}">{{ $course->name }}</a>
+                                    href="{{ route('student.course' , $course->course_code) }}">{{ $course->name }}</a>
                             </h5>
                             <h6 class="card-subtitle mb-2 text-muted">{{ $course->category->name }}</h6>
                         </div>

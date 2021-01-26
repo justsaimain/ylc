@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Admin;
+use App\Models\Course;
 use Illuminate\Database\Seeder;
 use Database\Seeders\CategorySeeder;
 use Illuminate\Support\Facades\Hash;
@@ -24,7 +25,8 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             CategorySeeder::class,
-            TeacherSeeder::class
+            TeacherSeeder::class,
+            CourseSeeder::class
         ]);
     }
 }

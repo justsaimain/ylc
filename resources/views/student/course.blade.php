@@ -2,10 +2,8 @@
 @section('content')
 <div class="row page-titles mx-0">
     <div class="col p-md-0">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
-            <li class="breadcrumb-item active"><a href="javascript:void(0)">Home</a></li>
-        </ol>
+        {{ Breadcrumbs::render('student.course',$course) }}
+
     </div>
 </div>
 <!-- row -->
@@ -34,7 +32,7 @@
                     <p class="card-text">{{ $unit->description }}</p>
                     <div class="list-group">
                         @foreach ($unit->lesson as $lesson)
-                        <a href="{{ url('/student/enrolled/' . $course->course_code . '/' . $unit->unit_code . '/' . $lesson->lesson_code) }}"
+                        <a href="{{ route('student.lesson' , [$course->course_code, $unit->unit_code , $lesson->lesson_code]) }}"
                             class="list-group-item list-group-item-action @if (Auth::user()->lessons->count() > 0)
                             @if (Auth::user()->lessons->last()->id == $lesson->id)
                             active

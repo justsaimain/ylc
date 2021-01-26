@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <title>Student Dashboard</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
@@ -115,12 +116,12 @@
             <div class="nk-nav-scroll">
                 <ul class="metismenu px-3" id="menu">
                     <li>
-                        <a href="{{ url('/student') }}">
+                        <a href="{{ route('student') }}">
                             <span class="nav-text">Dashboard</span>
                         </a>
                     </li>
                     <li>
-                        <a href="{{ url('/student/enrolled') }}">
+                        <a href="{{ route('student.enrolled') }}">
                             <span class="nav-text">Enrolled Courses</span>
                         </a>
                     </li>
@@ -195,6 +196,8 @@
         })(jQuery);
     </script>
 
+    <script src="{{ asset('js/voice.js') }}"></script>
+    <script src="{{ asset('js/true_false.js') }}"></script>
 
 </body>
 

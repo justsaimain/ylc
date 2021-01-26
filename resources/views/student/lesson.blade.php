@@ -31,7 +31,7 @@
                 <div class="card-body">
                     <p class="card-title">There is {{ $lesson->exercise->count() }} exercises for this lesson.</p>
                     <div class="border text-center p-5 mt-3">
-                        <a href="{{ url('/student/enrolled/' . $course->course_code . '/' . $unit->unit_code . '/' . $lesson->lesson_code . '/exercise') }}"
+                        <a href="{{ route('student.exercise' , [$course->course_code , $unit->unit_code , $lesson->lesson_code]) }}"
                             class="btn btn-primary">Go to
                             Exercise</a>
                     </div>

@@ -137,6 +137,20 @@
                             <input type="file" id="image" name="image" class="d-block">
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
+                        @elseif($type == "voice")
+                        <input type="text" hidden name="type" value="{{ $type }}">
+                        <div class="form-group">
+                            <label for="question" class="">Question</label>
+                            <div class="">
+                                <textarea name="question" class="form-control" id="question" cols="30"
+                                    rows="10"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="image" class="">Image (Optional)</label>
+                            <input type="file" name="image" class="d-block">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
                         @else
                         <div class="p-5 text-center border">
                             <p class="card-title mb-4">Select Exercise Type</p>
@@ -149,6 +163,8 @@
                                 class="btn btn-primary">Scramble</a>
                             <a href="{{ route('dashboard.add_exercise' , ['unit_code' => $lesson->unit->unit_code , 'lesson_code' => $lesson->lesson_code])  . '?type=' . 'matching' }}"
                                 class="btn btn-primary">Matching</a>
+                            <a href="{{ route('dashboard.add_exercise' , ['unit_code' => $lesson->unit->unit_code , 'lesson_code' => $lesson->lesson_code])  . '?type=' . 'voice' }}"
+                                class="btn btn-primary">Voice Test</a>
                         </div>
                         @endif
                     </form>
@@ -179,6 +195,8 @@
                             class="btn btn-primary">Scramble</a>
                         <a href="{{ route('dashboard.add_exercise' , ['unit_code' => $lesson->unit->unit_code , 'lesson_code' => $lesson->lesson_code])  . '?type=' . 'matching' }}"
                             class="btn btn-primary">Matching</a>
+                        <a href="{{ route('dashboard.add_exercise' , ['unit_code' => $lesson->unit->unit_code , 'lesson_code' => $lesson->lesson_code])  . '?type=' . 'voice' }}"
+                            class="btn btn-primary">Voice Test</a>
                     </div>
                 </div>
             </div>

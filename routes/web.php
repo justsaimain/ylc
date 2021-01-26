@@ -46,12 +46,14 @@ Route::post('/enroll-course/{course_code}', [EnrollController::class, 'enrollCou
 Route::group(['middleware' => 'auth:web', 'prefix' => '/student'], function () {
     Route::get('/', function () {
         return view('student.index');
-    });
+    })->name('student');
 
-    Route::get('/enrolled', [UserCourseController::class, 'enrolledCourse']);
-    Route::get('/enrolled/{course_code}', [UserCourseController::class, 'viewEnrolledCourse']);
-    Route::get('/enrolled/{course_code}/{unit_code}/{lesson_code}', [UserLessonController::class, 'viewLesson']);
-    Route::get('/enrolled/{course_code}/{unit_code}/{lesson_code}/exercise', [UserExerciseController::class, 'viewExercise']);
+    Route::get('/course', [UserCourseController::class, 'enrolledCourse'])->name("student.enrolled");
+    Route::get('/course/{course_code}', [UserCourseController::class, 'viewEnrolledCourse'])->name("student.course");
+    Route::get('/course/{course_code}/{unit_code}/{lesson_code}', [UserLessonController::class, 'viewLesson'])->name("student.lesson");
+    Route::get('/course/{course_code}/{unit_code}/{lesson_code}/exercise', [UserExerciseController::class, 'viewExercise'])->name("student.exercise");
+
+    Route::post('voice-test-check', [UserExerciseController::class, 'checkVoiceTest']);
 });
 
 // Teacher
