@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Models\User;
 use App\Models\Course;
 use App\Models\Lesson;
 use App\Models\Exercise;
@@ -38,6 +39,10 @@ class ExerciseController extends Controller
         $result = $request->result;
 
         if (strcasecmp($exercise->question, $result) == 0) {
+
+            $user = User::find(Auth::id());
+            $user->exercises()->attach($request->exerciseId);
+
             return response()->json([
                 'currect_answer' => $exercise->question,
                 'your__answer' => $result,

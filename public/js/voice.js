@@ -22,6 +22,7 @@ recognition.continuous = true;
 
 recognition.onstart = function(){
     $('.voice-start-btn').css('display','none');
+    $('.result-box').css('display','none');
     textbox.val = '';
     content = '';
     instructions.text('Voice Recognition is on.');
@@ -73,12 +74,20 @@ recognition.onresult = function(event){
                 console.log('Your Answer is currect.');
                 $('.result-box-text').text('Your answer is Currect.')
                 $('.result-box').addClass('text-success');
+                $('.result-box').css('display','block');
                 $('.result-box-text').addClass('text-success');
                 $('.result-box-icon').addClass('fa-check-circle');
+                $('.result-box-text').removeClass('text-danger');
+                $('.result-box').removeClass('text-danger');
+                $('.result-box-icon').removeClass('fa-times-circle');
                 $('.result-box').removeClass('d-none');
             }else{
                 $('.result-box-text').text('Your answer is Wrong.')
+                $('.result-box').css('display','block');
+                $('.result-box-text').removeClass('text-success');
+                $('.result-box-icon').removeClass('fa-check-circle');
                 $('.result-box').addClass('text-danger');
+                $('.result-box').removeClass('text-success');
                 $('.result-box-text').addClass('text-danger');
                 $('.result-box-icon').addClass('fa-times-circle');
                 $('.result-box').removeClass('d-none');
@@ -104,5 +113,5 @@ $('.voice-start-btn').on('click',function(event){
 })
 
 $('.tab-click').on('click',function(){
-    textbox = '';
+    $('.result-box').css('display','none');
 });
