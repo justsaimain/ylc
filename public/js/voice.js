@@ -34,6 +34,7 @@ recognition.onspeechend = function(){
 }
 
 recognition.onerror = function(event){
+    console.log(event);
     instructions.text('Voice Recognition on Error. Try Again.');
 }
 
