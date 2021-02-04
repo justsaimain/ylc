@@ -53,7 +53,13 @@ Route::group(['middleware' => 'auth:web', 'prefix' => '/student'], function () {
     Route::get('/course/{course_code}/{unit_code}/{lesson_code}', [UserLessonController::class, 'viewLesson'])->name("student.lesson");
     Route::get('/course/{course_code}/{unit_code}/{lesson_code}/exercise', [UserExerciseController::class, 'viewExercise'])->name("student.exercise");
 
+
+    // check answer
+
     Route::post('voice-test-check', [UserExerciseController::class, 'checkVoiceTest']);
+    Route::post('true-false-check', [UserExerciseController::class, 'checkTrueFalse']);
+    Route::post('multiple-choice-check', [UserExerciseController::class, 'checkMultipleChoice']);
+    Route::post('multiple-choice-image-check', [UserExerciseController::class, 'checkMultipleChoiceImage']);
 });
 
 // Teacher
@@ -114,10 +120,6 @@ Route::group(['middleware' => 'auth:admin', 'prefix' => 'dashboard'], function (
 });
 
 
-Route::get('/test', function () {
-    $video = Crypt::decryptString('eyJpdiI6IkhHOWZYNnhMaDlTamxZNnB1QjgvV1E9PSIsInZhbHVlIjoic0tzd2o3SGl1cFVLYmRFT2ZKOE9JYXhWZkFxUVBCVS91NEZJZ2lBUWxKQT0iLCJtYWMiOiI2MDVlNzlhN2I3ZjE2N2RkMGY3OWMzYzYxMTg5MTE5YzFlODcxNzMzODUxM2MxYjgwNmEzZDNlNzM2OWY4MTA5In0=');
-    return $video;
-});
 
 Route::post('/test', function (Request $request) {
     $filename = $request->file('file')->getClientOriginalName();

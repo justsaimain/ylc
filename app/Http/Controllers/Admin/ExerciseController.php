@@ -37,6 +37,22 @@ class ExerciseController extends Controller
         $exercise->option = $request->option;
         $exercise->answer = $request->answer;
 
+        if ($request->file('option_images')) {
+            $option_images = [];
+
+            foreach ($request->file('option_images') as $file) {
+
+                $fname = $file->getClientOriginalName();
+                $path = public_path('storage/courses/' . $unit->course->course_code . '/lessons/exercise/images/');
+                $file->move($path, $fname);
+                array_push($option_images,  $fname);
+            }
+
+            $serializedArr = serialize($option_images);
+
+            $exercise->option_images = $serializedArr;
+        }
+
         if ($request->file('image')) {
             $file_name = time() . rand(000, 999) . '.' . $request->file('image')->getClientOriginalExtension();
             $path = public_path('storage/courses/' . $unit->course->course_code . '/lessons/images/');
@@ -44,7 +60,43 @@ class ExerciseController extends Controller
             $exercise->image = $file_name;
         }
 
+
+
         $exercise->save();
         return back();
+    }
+
+    public function uploadMultipleChoiceImages(Request $request)
+    {
+
+        $lesson = Lesson::where('lesson_code', $request->lesson_code)->first();
+
+        $prefix = date('ym') . rand(00, 99);
+        $exercise_code = IdGenerator::generate(['table' => 'exercises', 'field' => 'exercise_code', 'length' => 10, 'prefix' => $prefix]);
+
+        $exercise  = new Exercise();
+        $exercise->lesson_id = $lesson->id;
+        $exercise->exercise_code = $exercise_code;
+        $exercise->type = 'mcq_images';
+
+        $files = $request['files'];
+        $images = [];
+
+        foreach ($files as $file) {
+            if (is_file($file)) {    // not sure this is needed
+                $fname = $file->getClientOriginalName();
+                $path = public_path('storage/exercises/images');
+
+                $file->move($path, $fname);
+                array_push($images,  $fname);
+            }
+        }
+
+        $serializedArr = serialize($images);
+
+        $exercise->option_images = $serializedArr;
+        $exercise->save();
+
+        return response($images);
     }
 }

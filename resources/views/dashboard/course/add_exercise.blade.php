@@ -43,7 +43,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="image" class="">Image (Optional)</label>
+                            <label for="image" class="">Image</label>
                             <input type="file" name="image" class="d-block">
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
@@ -71,7 +71,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="image" class="">Image (Optional)</label>
+                            <label for="image" class="">Image</label>
                             <input type="file" id="image" name="image" class="d-block">
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
@@ -100,7 +100,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="image" class="">Image (Optional)</label>
+                            <label for="image" class="">Image</label>
                             <input type="file" id="image" name="image" class="d-block">
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
@@ -133,7 +133,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="image" class="">Image (Optional)</label>
+                            <label for="image" class="">Image</label>
                             <input type="file" id="image" name="image" class="d-block">
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
@@ -147,8 +147,36 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="image" class="">Image (Optional)</label>
+                            <label for="image" class="">Image</label>
                             <input type="file" name="image" class="d-block">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        @elseif($type == 'mcq_images')
+                        <input type="text" hidden name="type" value="{{ $type }}">
+                        <input type="text" class="lesson_code" value="{{ request()->lesson_code }}" hidden>
+                        <div class="form-group">
+                            <label for="question" class="">Question</label>
+                            <div class="">
+                                <textarea name="question" class="form-control" id="question" cols="30"
+                                    rows="10"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="option_images" class="">Option Images</label>
+                            <div class="">
+                                <input type="file" class="option_images_input" name="option_images[]"
+                                    id="option_images_input" multiple>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <ul class="list-group" id="image_options_list">
+                            </ul>
+                        </div>
+                        <div class="form-group">
+                            <label for="answer" class="">Correct Answer (Image Name)</label>
+                            <div class="">
+                                <input type="text" id="answer" name="answer" class="form-control">
+                            </div>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                         @else
@@ -186,17 +214,23 @@
                     <h4 class="card-title mb-5">Add Exercise</h4>
                     <div class="p-5 text-center border">
                         <p class="card-title mb-4">Select Exercise Type</p>
-                        <a href="{{ route('dashboard.add_exercise' , ['unit_code' => $lesson->unit->unit_code , 'lesson_code' => $lesson->lesson_code])  . '?type=' . 'true_false' }}"
-                            class="btn btn-primary">True /
-                            False</a>
-                        <a href="{{ route('dashboard.add_exercise' , ['unit_code' => $lesson->unit->unit_code , 'lesson_code' => $lesson->lesson_code])  . '?type=' . 'mcq' }}"
-                            class="btn btn-primary">Multiple Choice Question</a>
-                        <a href="{{ route('dashboard.add_exercise' , ['unit_code' => $lesson->unit->unit_code , 'lesson_code' => $lesson->lesson_code])  . '?type=' . 'scramble' }}"
-                            class="btn btn-primary">Scramble</a>
-                        <a href="{{ route('dashboard.add_exercise' , ['unit_code' => $lesson->unit->unit_code , 'lesson_code' => $lesson->lesson_code])  . '?type=' . 'matching' }}"
-                            class="btn btn-primary">Matching</a>
-                        <a href="{{ route('dashboard.add_exercise' , ['unit_code' => $lesson->unit->unit_code , 'lesson_code' => $lesson->lesson_code])  . '?type=' . 'voice' }}"
-                            class="btn btn-primary">Voice Test</a>
+                        <div>
+                            <a href="{{ route('dashboard.add_exercise' , ['unit_code' => $lesson->unit->unit_code , 'lesson_code' => $lesson->lesson_code])  . '?type=' . 'true_false' }}"
+                                class="btn btn-primary">True /
+                                False</a>
+                            <a href="{{ route('dashboard.add_exercise' , ['unit_code' => $lesson->unit->unit_code , 'lesson_code' => $lesson->lesson_code])  . '?type=' . 'mcq' }}"
+                                class="btn btn-primary">Multiple Choice Question</a>
+                            <a href="{{ route('dashboard.add_exercise' , ['unit_code' => $lesson->unit->unit_code , 'lesson_code' => $lesson->lesson_code])  . '?type=' . 'scramble' }}"
+                                class="btn btn-primary">Scramble</a>
+                            <a href="{{ route('dashboard.add_exercise' , ['unit_code' => $lesson->unit->unit_code , 'lesson_code' => $lesson->lesson_code])  . '?type=' . 'matching' }}"
+                                class="btn btn-primary">Matching</a>
+                            <a href="{{ route('dashboard.add_exercise' , ['unit_code' => $lesson->unit->unit_code , 'lesson_code' => $lesson->lesson_code])  . '?type=' . 'voice' }}"
+                                class="btn btn-primary">Voice Test</a>
+                        </div>
+                        <div class="mt-3">
+                            <a href="{{ route('dashboard.add_exercise' , ['unit_code' => $lesson->unit->unit_code , 'lesson_code' => $lesson->lesson_code])  . '?type=' . 'mcq_images' }}"
+                                class="btn btn-primary">Multiple Choice with Images</a>
+                        </div>
                     </div>
                 </div>
             </div>

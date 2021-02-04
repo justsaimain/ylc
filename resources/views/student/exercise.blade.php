@@ -50,16 +50,22 @@
                                         </span>
                                         <div class="text-center">
                                             @if ($exe->image)
-                                            <img class="rounded"
-                                                src="{{ asset('storage/courses/' . $course->course_code .'/lessons/images/' .  $exe->image  ) }}"
-                                                alt="">
+                                            <div class="text-center">
+                                                <img class="rounded w-50"
+                                                    src="{{ asset('storage/courses/' . $course->course_code .'/lessons/images/' .  $exe->image  ) }}"
+                                                    alt="">
+                                            </div>
                                             @endif
                                             <h4 class="mt-3">{{ $exe->question }}</h4>
+                                            <div class="text-center result-box d-none">
+                                                <i class="fas fa-5x result-box-icon"></i>
+                                                <p class="h3 mt-2 result-box-text"></p>
+                                            </div>
                                             <div class="d-flex justify-content-center align-items-center mt-3">
-                                                <button class="btn btn-primary mr-3 true-btn"><i
-                                                        class="fas fa-check mr-2"></i>
+                                                <button class="btn btn-primary mr-3 true-btn"
+                                                    data-id="{{ $exe->id }}"><i class="fas fa-check mr-2"></i>
                                                     True</button>
-                                                <button class="btn btn-primary false-btn"><i
+                                                <button class="btn btn-primary false-btn" data-id="{{ $exe->id }}"><i
                                                         class="fas fa-times mr-2"></i>
                                                     False</button>
                                             </div>
@@ -72,14 +78,22 @@
                                         </span>
                                         <div class="text-center">
                                             @if ($exe->image)
-                                            <img class="rounded"
-                                                src="{{ asset('storage/courses/' . $course->course_code .'/lessons/images/' .  $exe->image  ) }}"
-                                                alt="">
+                                            <div class="text-center">
+                                                <img class="rounded w-50"
+                                                    src="{{ asset('storage/courses/' . $course->course_code .'/lessons/images/' .  $exe->image  ) }}"
+                                                    alt="">
+                                            </div>
                                             @endif
                                             <h4 class="mt-3">{{ $exe->question }}</h4>
+                                            <div class="text-center result-box d-none">
+                                                <i class="fas fa-5x result-box-icon"></i>
+                                                <p class="h3 mt-2 result-box-text"></p>
+                                            </div>
                                             <div class="d-flex justify-content-center align-items-center mt-3">
                                                 @foreach (explode(',',$exe->option) as $option)
-                                                <button class="btn btn-primary @if(!$loop->last)mr-3 @endif"><i
+                                                <button
+                                                    class="btn btn-primary  multiple-choice-btn @if(!$loop->last)mr-3 @endif"
+                                                    data-id="{{ $exe->id }}" data-answer="{{ $option }}"><i
                                                         class="fas fa-circle mr-2 "></i>
                                                     {{ $option }}</button>
                                                 @endforeach
@@ -93,12 +107,14 @@
                                         </span>
                                         <div class="text-center">
                                             @if ($exe->image)
-                                            <img class="rounded"
-                                                src="{{ asset('storage/courses/' . $course->course_code .'/lessons/images/' .  $exe->image  ) }}"
-                                                alt="">
+                                            <div class="text-center">
+                                                <img class="rounded w-50"
+                                                    src="{{ asset('storage/courses/' . $course->course_code .'/lessons/images/' .  $exe->image  ) }}"
+                                                    alt="">
+                                            </div>
                                             @endif
                                             <h4 class="mt-3">
-                                                {{ str_replace('__', '<h1>Replace</h1>' , $exe->question) }}</h4>
+                                                {{ str_replace('___', 'blank' , $exe->question) }}</h4>
                                             <div class="d-flex justify-content-center align-items-center mt-3">
                                                 @foreach (explode(',',$exe->option) as $option)
                                                 <button class="btn btn-primary @if(!$loop->last)mr-3 @endif"><i
@@ -117,9 +133,11 @@
                                     <input type="text" value="{{ $exe->id }}" hidden class="exeId">
                                     <h3 class="text-center mb-5">{{ ucfirst($exe->question) }}</h3>
                                     @if ($exe->image)
-                                    <img class="rounded"
-                                        src="{{ asset('storage/courses/' . $course->course_code .'/lessons/images/' .  $exe->image  ) }}"
-                                        alt="">
+                                    <div class="text-center">
+                                        <img class="rounded w-50"
+                                            src="{{ asset('storage/courses/' . $course->course_code .'/lessons/images/' .  $exe->image  ) }}"
+                                            alt="">
+                                    </div>
                                     @endif
                                     <div class="text-center result-box d-none">
                                         <i class="fas fa-5x result-box-icon"></i>
@@ -133,6 +151,33 @@
                                             Answer</button>
                                     </div>
 
+                                    @elseif($exe->type == 'mcq_images')
+                                    <span class="badge badge-primary px-2 py-2">
+                                        Multiple Choice Question
+                                    </span>
+                                    <input type="text" value="{{ $exe->id }}" hidden class="exeId">
+                                    <h3 class="text-center mb-5">{{ ucfirst($exe->question) }}</h3>
+                                    <div class="row row-cols-1 row-cols-md-2">
+                                        @foreach (unserialize($exe->option_images) as $image)
+                                        <div class="col mb-4">
+                                            <div class="card">
+                                                <img class="card-img-top"
+                                                    src="{{ asset('storage/courses/' . $course->course_code .'/lessons/exercise/images/' .  $image  ) }}"
+                                                    alt="">
+                                                <div class="card-body text-center">
+                                                    <button class="btn btn-primary mcq_images_answer_btn"
+                                                        data-id="{{ $exe->id }}"
+                                                        data-answer="{{ $image }}">Select</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @endforeach
+
+                                    </div>
+                                    <div class="text-center result-box d-none">
+                                        <i class="fas fa-5x result-box-icon"></i>
+                                        <p class="h3 mt-2 result-box-text"></p>
+                                    </div>
                                     @else
                                     <p>nothing</p>
                                     @endif

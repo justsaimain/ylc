@@ -20,11 +20,12 @@ class CreateExercisesTable extends Migration
             $table->string('type');
             $table->text('question')->nullable();
             $table->text('option')->nullable();
+            $table->text('option_images')->nullable();
             $table->text('section_a')->nullable();
             $table->text('section_b')->nullable();
             $table->text('answer')->nullable();
             $table->string('language')->nullable();
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->timestamps();
 
             $table->foreign('lesson_id')->references('id')->on('lessons')->onDelete('cascade');

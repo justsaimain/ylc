@@ -37,12 +37,11 @@ class ExerciseController extends Controller
 
         $exercise = Exercise::find($request->exerciseId);
         $result = $request->result;
+        $user = User::find(Auth::id());
+        $user->exercises()->attach($request->exerciseId);
+
 
         if (strcasecmp($exercise->question, $result) == 0) {
-
-            $user = User::find(Auth::id());
-            $user->exercises()->attach($request->exerciseId);
-
             return response()->json([
                 'currect_answer' => $exercise->question,
                 'your__answer' => $result,
@@ -52,6 +51,59 @@ class ExerciseController extends Controller
             return response()->json([
                 'currect_answer' => $exercise->question,
                 'your__answer' => $result,
+                'is_currect' => false
+            ]);
+        }
+    }
+
+
+    public function checkTrueFalse(Request $request)
+    {
+        $exercise = Exercise::find($request->exerciseId);
+        $answer = $request->answer;
+        $user = User::find(Auth::id());
+        $user->exercises()->attach($request->exerciseId);
+        if ($exercise->answer == $answer) {
+            return response()->json([
+                'is_currect' => true
+            ]);
+        } else {
+            return response()->json([
+                'is_currect' => false
+            ]);
+        }
+    }
+
+    public function checkMultipleChoice(Request $request)
+    {
+
+        $exercise = Exercise::find($request->exerciseId);
+        $answer = $request->answer;
+        $user = User::find(Auth::id());
+        $user->exercises()->attach($request->exerciseId);
+        if ($exercise->answer == $answer) {
+            return response()->json([
+                'is_currect' => true
+            ]);
+        } else {
+            return response()->json([
+                'is_currect' => false
+            ]);
+        }
+    }
+
+    public function checkMultipleChoiceImage(Request $request)
+    {
+        $exercise = Exercise::find($request->exerciseId);
+        $answer = $request->answer;
+        $user = User::find(Auth::id());
+        $user->exercises()->attach($request->exerciseId);
+        if ($exercise->answer == $answer) {
+            return response()->json([
+                'is_currect' => true
+            ]);
+        } else {
+            return response()->json([
                 'is_currect' => false
             ]);
         }

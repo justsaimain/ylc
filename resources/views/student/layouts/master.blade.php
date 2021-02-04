@@ -198,6 +198,8 @@
 
     <script src="{{ asset('js/voice.js') }}"></script>
     <script src="{{ asset('js/true_false.js') }}"></script>
+    <script src="{{ asset('js/multiple_choice.js') }}"></script>
+    <script src="{{ asset('js/multiple_choice_image.js') }}"></script>
 
 </body>
 
