@@ -1,5 +1,5 @@
 @php
-$regions = Http::get('http://myancity.devsm.net/api/regions')->json();
+// $regions = Http::get('http://myancity.devsm.net/api/regions')->json();
 @endphp
 
 <!-- Modal -->
@@ -37,15 +37,21 @@ $regions = Http::get('http://myancity.devsm.net/api/regions')->json();
                         <div class="col-md-6">
                             <select class="form-control mb-3" name="region" id="region_select">
                                 <option selected>Select Region</option>
-                                @foreach ($regions as $region)
+                                {{-- @foreach ($regions as $region)
                                 <option value="{{ $region['name'] }}" data-reg="{{ $region['id'] }}">
                                     {{ $region['name'] }}</option>
-                                @endforeach
+                                @endforeach --}}
+                                <option value="Yangon">Yangon</option>
+                                <option value="Mandalay">Mandalay</option>
                             </select>
                         </div>
                         <div class="col-md-6">
-                            <select class="form-control mb-3" name="township" id="township_select">
+                            {{-- <select class="form-control mb-3" name="township" id="township_select">
                                 <option selected>Select Township</option>
+                            </select> --}}
+                            <select class="form-control mb-3" name="township" >
+                                <option value="Yangon">Yangon</option>
+                                <option value="Mandalay">Mandalay</option>
                             </select>
                         </div>
                         <div class="col-12 mb-5 mt-2">

@@ -33,15 +33,15 @@ trait RegistersUsers
 
         event(new Registered($user = $this->create($request->all())));
 
-        // $this->guard()->login($user);
+        $this->guard()->login($user);
 
         if ($response = $this->registered($request, $user)) {
             return $response;
         }
 
         return $request->wantsJson()
-            ? new JsonResponse([], 201)
-            : redirect($this->redirectPath());
+                    ? new JsonResponse([], 201)
+                    : redirect($this->redirectPath());
     }
 
     /**
@@ -63,7 +63,6 @@ trait RegistersUsers
      */
     protected function registered(Request $request, $user)
     {
-        Auth::login($user);
-        return redirect('/');
+        //
     }
 }
